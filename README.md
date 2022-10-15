@@ -1,5 +1,5 @@
-# neovim_lua_config
-Neovim Configs in Lua
+# Neovim
+This is a Neovim Rice in Lua
 
 Not a substitute for a actual distribution as AstroVim or SpaceVim, but just a reference.
 
