@@ -17,6 +17,8 @@ require('nvim-treesitter.configs').setup({
         'elm',
         'haskell',
         'python',
+        'clojure',
+        'org',
     },
     highlight = {
         enable = true,

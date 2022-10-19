@@ -13,11 +13,52 @@ return require('packer').startup({
     function(use)
     
         -- Packer to manage itself
-        use ('wbthomason/packer.nvim')
-        
+        use ("wbthomason/packer.nvim")
 
-        -- Help to use the native lsp.
-        use ({ "neovim/nvim-lspconfig" })
+        -- Native Lsp --
+
+        -- Plugin to help configure the Native Lsp
+        use ({ 
+            "neovim/nvim-lspconfig",
+            event = 'BufRead',
+            config = function()
+                require("lsp.lsp-config")
+            end,
+            requires = {
+                {
+                    "hrsh7th/cmp-nvim-lsp",
+                },
+            },
+        })
+
+        -- Autocomplete engine for the Native Lsp
+        use({
+            {
+                'hrsh7th/nvim-cmp',
+                event = 'InsertEnter',
+                config = function()
+                    require('lsp.nvim-cmp')
+                end,
+                requires = {
+                    {
+                        'L3MON4D3/LuaSnip',
+                        event = 'InsertEnter',
+                        config = function()
+                            require('lsp.luasnip')
+                        end,
+                        requires = {
+                            {
+                                'rafamadriz/friendly-snippets',
+                                event = 'CursorHold',
+                            },
+                        },
+                    },
+                },
+            },
+            { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+            { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+            { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+        })
 
 
         use ({ "nvim-lua/plenary.nvim" })
@@ -27,7 +68,7 @@ return require('packer').startup({
         use ({
             'folke/tokyonight.nvim',
             config = function()
-                require('config.plugins.tokyonight')
+                require('plugins.tokyonight')
             end
         })
         
@@ -45,7 +86,7 @@ return require('packer').startup({
             'nvim-lualine/lualine.nvim',
             requires = { 'kyazdani42/nvim-web-devicons', opt = true},
             config = function()
-                require('config.plugins.lualine')
+                require('plugins.lualine')
             end
         })
         
@@ -58,7 +99,7 @@ return require('packer').startup({
             },
             tag = 'nightly',
             config = function()
-                require('config.plugins.nvim-tree')
+                require('plugins.nvim-tree')
             end
         })
 
@@ -70,21 +111,24 @@ return require('packer').startup({
                 event = 'CursorHold',
                 run = ':TSUpdate',
                 config = function()
-                    require('config.plugins.treesitter')
+                    require('plugins.treesitter')
                 end
             },
             { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
+            { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
             { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
+            { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
+            { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
         })
 
 
         -- Finder
-        use({
+        use ({
             {
                 'nvim-telescope/telescope.nvim',
                 event = 'CursorHold',
                 config = function()
-                    require('config.plugins.telescope')
+                    require('plugins.telescope')
                 end,
             },
             {
@@ -100,14 +144,17 @@ return require('packer').startup({
                 after = 'telescope.nvim',
             },
         })
-
+        
+        
+        -- Productivity
+        use { "nvim-orgmode/orgmode" }
 
         -- Doom Emacs style leader key help
         use {
             'folke/which-key.nvim',
             event = 'VimEnter',
             config = function()
-                require('config.plugins.which-key')
+                require('plugins.which-key')
             end
         }
 

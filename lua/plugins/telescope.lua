@@ -48,13 +48,13 @@ vim.keymap.set('n', '<C-P>', function()
 end)
 
 -- Get :help at the speed of light
-vim.keymap.set('n', '<leader>H', Telescope.help_tags)
+vim.keymap.set('n', '<leader>to', Telescope.help_tags)
 
 -- Fuzzy find active buffers
-vim.keymap.set('n', "'b", Telescope.buffers)
+vim.keymap.set('n', "<leader>tb", Telescope.buffers)
 
 -- Search for string
-vim.keymap.set('n', "'r", Telescope.live_grep)
+vim.keymap.set('n', "<leader>tg", Telescope.live_grep)
 
 -- Fuzzy find changed files in git
-vim.keymap.set('n', "'c", Telescope.git_status)
+vim.keymap.set('n', "<leader>tc", Telescope.git_status)

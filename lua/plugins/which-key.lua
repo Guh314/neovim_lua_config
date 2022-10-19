@@ -102,25 +102,36 @@ wk.register({
     p = { "<CMD>:bprev<CR>", "Previous Buffer" },
   },
 
-  l = {
-    name = "+LSP",
-    D = { "vim.lsp.buf.declaration", "Declaration" },
-    d = { "vim.lsp.buf.definition", "Definition" },
-    K = { "vim.lsp.buf.hover", "Hover" },
-    i = { "vim.lsp.buf.implementation", "Implementation" },
-    k = { "vim.lsp.buf.signature_help", "Signature Help" },
-    w = {
-      name = "+Buffer Workspace",
-      a = { "vim.lsp.buf.add_workspace", "Add Workspace" },
-      r = { "vim.lsp.buf.remove_workspace", "Remove Workspace" },
-      l = { function () print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, "Print Workspaces" },
-    },
-    t = { "vim.lsp.buf.type_signature", "Type Signature" },
-    r = { "vim.lsp.buf.rename", "Rename" },
-    a = { "vim.lsp.buf.code_action", "Code_action" },
-    r = { "vim.lsp.buf.references", "References" },
-    f = { "vim.lsp.buf.formatting", "Formatting" },
+-- Make LSP Work Somehow...
+--  l = {
+--    name = "+LSP",
+--    D = { "vim.lsp.buf.declaration", "Declaration" },
+--    d = { "vim.lsp.buf.definition", "Definition" },
+--    K = { "vim.lsp.buf.hover", "Hover" },
+--    i = { "vim.lsp.buf.implementation", "Implementation" },
+--    k = { "vim.lsp.buf.signature_help", "Signature Help" },
+--    w = {
+--      name = "+Buffer Workspace",
+--      a = { "vim.lsp.buf.add_workspace", "Add Workspace" },
+--      r = { "vim.lsp.buf.remove_workspace", "Remove Workspace" },
+--      l = { function () print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+--
+--  end, "Print Workspaces" },
+--    },
+--    t = { "vim.lsp.buf.type_signature", "Type Signature" },
+--    r = { "vim.lsp.buf.rename", "Rename" },
+--    a = { "vim.lsp.buf.code_action", "Code_action" },
+--    r = { "vim.lsp.buf.references", "References" },
+--    f = { "vim.lsp.buf.formatting", "Formatting" },
+--  },
+
+  t = {
+    name = "+Telescope",
+    o = {"Telescope.help_tags", "THelp Tags"},
+    b = {"Telescope.buffers", "TBuffers"},
+    g = {"Telescope.live_grep", "TGrep"},
+    c = {"Telescope.git_status", "TGit Status"},
   },
+
 
 }, { prefix = "<leader>" })
