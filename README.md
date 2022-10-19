@@ -10,6 +10,39 @@ It contains the following Plugins:
   * TokyoNight theme
   * TreeSitter
   * Which-Key
+  * nvim-lspconfig
+  * nvim/cmp
+  * luaSnip
+
+Some of the Servers:
+  * lsp.sumneko_lua
+  * lsp.rust_analyzer
+  * gopls,
+  * pyright
+  * html
+  * cssls
+  * jsonls
+  * elmls
+  
+TreeSitter Highlight:
+  * C
+  * Lua
+  * Rust
+  * Go
+  * Javascript
+  * Typescript
+  * Tsx
+  * Markdown
+  * Html
+  * Css
+  * Json
+  * Bash
+  * Fish
+  * Elm
+  * Haskell
+  * Python
+  * Clojure
+
   
 This is a configuration that has some bugs, use it only as a reference.
 
